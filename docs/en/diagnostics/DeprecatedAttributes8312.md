@@ -22,7 +22,7 @@ The following items are deprecated and their use is not recommended since platfo
    * `ScaleLines`
    * `ScaleColor`
 
-* Properties of `ChartPlotArea` object are obsolete, not recomended for use and supported only for backward compatibility:
+* Properties of `ChartPlotArea` object are obsolete, not recommended for use and supported only for backward compatibility:
    * `ShowSeriesScaleLabels` - it is recommended to use `SeriesScale.ScaleLabelLocation`
    * `ShowPointsScaleLabels` - it is recommended to use `PointsScale.ScaleLabelLocation`
    * `ShowValuesScaleLabels` - it is recommended to use `ValuesScale.ScaleLabelLocation`

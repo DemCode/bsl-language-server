@@ -3,7 +3,7 @@
 <!-- Блоки выше заполняются автоматически, не трогать -->
 ## Description
 
-You should not place export methods in command and General command modules. You can't access these modules from code external to them, so export methods in these modules do not make sense.
+Command and General command modules should not contain export methods. These modules can't be accessed from external code, so export methods in these modules do not make sense.
 
 ## Sources
 

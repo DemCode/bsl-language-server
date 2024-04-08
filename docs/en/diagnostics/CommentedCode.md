@@ -18,7 +18,7 @@ also wrong:
 ```bsl
 Procedure BeforeDelete(Failure)
     If True Then
-        // Ivanov: need fix
+        // Bob: need fix
     EndIf;
 EndProcedure
 ```

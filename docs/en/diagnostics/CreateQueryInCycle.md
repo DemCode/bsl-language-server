@@ -13,7 +13,7 @@ Incorrect
 
 // BanksToProcessing - contains an array of banks
 
-InidividualQuery = New Query("
+IndividualQuery = New Query("
   |SELECT
   | BankAccounts.Ref AS Account
   |FROM
@@ -22,8 +22,8 @@ InidividualQuery = New Query("
   | BankAccounts.Bank = &Bank");
 
 For Each Bank From BanksToProcess Do
-  InidividualQuery .SetParameter("Bank", Bank);
-  AccountsSelection = InidividualQuery .Execute().Select();
+  IndividualQuery .SetParameter("Bank", Bank);
+  AccountsSelection = IndividualQuery.Execute().Select();
   While AccountsSelection.Next() Do
     ProcessBankAccounts(AccountsSelection.Account);
   EndDo;

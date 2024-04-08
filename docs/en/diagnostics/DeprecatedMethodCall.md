@@ -22,5 +22,5 @@ DeprecatedProcedure(); // Triggering diagnostics
 
 ## Sources
 
-* Standart: [Procedures and functions description (RU)](https://its.1c.ru/db/v8std#content:453:hdoc)
+* Standard: [Procedures and functions description (RU)](https://its.1c.ru/db/v8std#content:453:hdoc)
 * [CWE-477 Use of Obsolete Function](http://cwe.mitre.org/data/definitions/477.html)

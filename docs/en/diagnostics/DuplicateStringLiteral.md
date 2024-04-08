@@ -31,7 +31,7 @@ Procedure Test(Param)
 EndProcedure
 ```
 
-Сorrected:
+Corrected:
 
 ```bsl
 Procedure Test(Param)
@@ -63,7 +63,7 @@ Procedure Test3(Param)
 EndProcedure
 ```
 
-Сorrected
+Corrected
 
 ```bsl
 Procedure Test2(Param)

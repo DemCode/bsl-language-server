@@ -7,7 +7,7 @@
 1. Создать каталог проекта `bsl-language-server`
 2. Склонировать в созданный каталог репозиторий проекта `https://github.com/1c-syntax/bsl-language-server.git`
 3. Выполнить настройку окружения по [инструкции](EnvironmentSetting.md)
-4. Выполнить команды для ингнорирования изменений в служебных файлах
+4. Выполнить команды для игнорирования изменений в служебных файлах
    1. `git update-index --assume-unchanged ./.idea/compiler.xml`
    2. `git update-index --assume-unchanged ./.idea/encodings.xml`
    3. `git update-index --assume-unchanged ./.idea/misc.xml`

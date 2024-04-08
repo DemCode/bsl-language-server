@@ -38,7 +38,7 @@ Function ServerModuleManager(Name)                                              
             If Metadata.Constants.Find(ObjectName) <> Undefined Then                    // 1
                 ObjectFounded = True;                                                   // 0
             EndIf;                                                                      // 0
-        ElsIf TypeName = Upper("InformationRegisters") Then                            // 1
+        ElsIf TypeName = Upper("InformationRegisters") Then                             // 1
             If Metadata.InformationRegisters.Find(ObjectName) <> Undefined Then         // 1
                 ObjectFounded = True;                                                   // 0
             EndIf;                                                                      // 0
@@ -59,7 +59,7 @@ Function ServerModuleManager(Name)                                              
     А = ?(SomeCondition1, True, ?(SomeCondition2, False, Undefined));                   // 2
     M = True Or 7;                                                                      // 1
     Return Module;                                                                      // 0
-EndFunction                                                                              // Total 12
+EndFunction                                                                             // Total 12
 ```
 
 ## Sources

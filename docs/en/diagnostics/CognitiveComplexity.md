@@ -16,34 +16,33 @@ Bellow are given code analysis rules, conditions increase cognitive complexity.
 ```bsl
 
 // Loop `For each`
-For Each Element in Collection Do                    // +1
+For Each Element in Collection Do                     // +1
 EndDo;
 
 // Loop `For`
-For i = StartValue To EndValue Do                    // +1
+For i = StartValue To EndValue Do                     // +1
 EndDo;
 
 // Loop `While`
-While Condition Do                                   // +1
+While Condition Do                                    // +1
 EndDo;
 
-
 // Condition
-If Condition1 Then                                   // +1
+If Condition1 Then                                    // +1
 
 // Alternative condition branch
-ElseIf Condition2 Then                               // +1
+ElseIf Condition2 Then                                // +1
 
 // default branch
 Else
 EndIf;
 
 // ternary operator
-Value = ?(Condition, ValueTrue, ValueFalse);         // +1
+Value = ?(Condition, ValueTrue, ValueFalse);          // +1
 
 Try
 // Exception handling
-Except                                               // +1
+Except                                                // +1
 EndTry;
 
 // Go to label
@@ -51,22 +50,21 @@ Goto ~Label;                                          // +1
 
 // Binary logical operations
 
-While Condition1 Or Condition2 Do                    // +2
+While Condition1 Or Condition2 Do                     // +2
 EndDo;
 
-If Condition1 And Condition2 Then                    // +2
+If Condition1 And Condition2 Then                     // +2
 
-ElseIf Condition2                                    // +1
-        Or Condition3 And Condition4 Then            // +2
-
+ElseIf Condition2                                     // +1
+        Or Condition3 And Condition4 Then             // +2
 EndIf;
 
-Value = ?(Condition1 Or Condition2 Or Not Condition3,// +3
+Value = ?(Condition1 Or Condition2 Or Not Condition3, // +3
                 ValueTrue, ValueFalse);
 
-Value = First Or Second;                             // +1
+Value = First Or Second;                              // +1
 
-Value = A <> B;                                      // +1
+Value = A <> B;                                       // +1
 
 ```
 
@@ -111,33 +109,32 @@ Bellow are code examples and their cognitive complexity calculation.
 
 ```bsl
 Function Example1(ClassType)
-    If ClassType.Unknown() Then                                                  // +1, condition expression, no nesting
+    If ClassType.Unknown() Then                                            // +1, condition expression, no nesting
         Return Chars.UnknownSymbol;
     EndIf;
 
     AmbiguityFound = False;
     ListSymbols = ClassType.GetSymbol().Children.Find("name");
-    For Each Symbol in ListSymbols Do
-// +1, loop, no nesting
-        If Symbol.HasType(Symbols.Strage)                                         // +2, condition nested in loop, nesting 1
-            AND NOT Symbols.Export() Then                                            // +1, logival operation, nesting not taken into account
+    For Each Symbol in ListSymbols Do                                      // +1, loop, no nesting
+        If Symbol.HasType(Symbols.Strage)                                  // +2, condition nested in loop, nesting 1
+            AND NOT Symbols.Export() Then                                  // +1, logical operation, nesting not taken into account
 
-            If CanOverride(Symbol) Then                                     // +3, nested condition, nesting 2
+            If CanOverride(Symbol) Then                                    // +3, nested condition, nesting 2
                 Overrideability = CheckOverrideability(Symbol, ClassType);
-                If Overrideability = Undefined Then                           // +4, nested condition, nesting 3
-                    If NOT AmbiguityFound Then                                 // +5, nested condition, nesting 4
+                If Overrideability = Undefined Then                        // +4, nested condition, nesting 3
+                    If NOT AmbiguityFound Then                             // +5, nested condition, nesting 4
                         AmbiguityFound = True;
                     EndIf;
-                ElseIf Overrideability Then                                     // +1, alternative condition branch, nesting not taken into account
+                ElseIf Overrideability Then                                // +1, alternative condition branch, nesting not taken into account
                     Return Symbol;
                 EndIf;
-            Else                                                                      // +1, default branch, nesting not taken into account
+            Else                                                           // +1, default branch, nesting not taken into account
                 Continue;
             EndIf;
         EndIf;
     EndDo;
 
-    If AmbiguityFound Then                                                   // +1, no nesting
+    If AmbiguityFound Then                                                 // +1, no nesting
         Return Symbols.UnknownSymbol;
     EndIf;
 
@@ -149,47 +146,47 @@ EndFunction
 ```bsl
 Function Example2(Document)
     StartTransaction();
-    NeedPost = ?(Document.Posted, FALSE,                                                         // +1, ternary operator
-                                        ?(Document.DeletionMark, FALSE, TRUE));                  // +2, nested ternary operator, nesting 1
-    Try                                                                                          // +0, try increases nesting level
+    NeedPost = ?(Document.Posted, FALSE,                                                // +1, ternary operator
+                                        ?(Document.DeletionMark, FALSE, TRUE));         // +2, nested ternary operator, nesting 1
+    Try                                                                                 // +0, try increases nesting level
         DocumentObject = Document.GetObject();
-        If DocumentObject.Posted Then                                                            // +2, nested condition, nesting 1
-            For Each TabularSectionLine Из DocumentObject.TabularSection Do                      // +3, nested loop, nesting 2
-                If TabularSectionLine.Column1 = 7                                                // +4, nested condition, nesting 3
-                        OR TabularSectionLine.Column2 = 7 Then                                   // +1, logical operation, nesting not taken into account
+        If DocumentObject.Posted Then                                                   // +2, nested condition, nesting 1
+            For Each TabularSectionLine Из DocumentObject.TabularSection Do             // +3, nested loop, nesting 2
+                If TabularSectionLine.Column1 = 7                                       // +4, nested condition, nesting 3
+                        OR TabularSectionLine.Column2 = 7 Then                          // +1, logical operation, nesting not taken into account
                     Continue;
                 EndIf;
-                If TabularSectionLine.Column4 > 1 Then                                          // +4, nested condition, nesting 3
+                If TabularSectionLine.Column4 > 1 Then                                  // +4, nested condition, nesting 3
                     Break;
-                Else                                                                            // +1, default branch, nesting not taken into account
-                    If TabularSectionLine.Column1 + TabularSectionLine.Column2 = 2 Then         // +5, nested condition, nesting 4
+                Else                                                                    // +1, default branch, nesting not taken into account
+                    If TabularSectionLine.Column1 + TabularSectionLine.Column2 = 2 Then // +5, nested condition, nesting 4
                         TabularSectionLine.Column10 = TabularSectionLine.Column1 * 2;
                     EndIf;
                 EndIf;
             EndDo;
-        Else                                                                                    // +1, default branch, nesting not taken into account
-            NeedPost = DocumentObject.Date > CurrentDate();                                     // +1, logical operation, nesting not taken into account
-            Goto ~Label;                                                                        // +1, go to label, nesting not taken into account
+        Else                                                                            // +1, default branch, nesting not taken into account
+            NeedPost = DocumentObject.Date > CurrentDate();                             // +1, logical operation, nesting not taken into account
+            Goto ~Label;                                                                // +1, go to label, nesting not taken into account
         EndIf;
 
-        If NeedPost Then                                                                        // +2, nested condition, nesting 1
+        If NeedPost Then                                                                // +2, nested condition, nesting 1
             DocumentObject.Write(DocumentWriteMode.Posting);
-        ElseIf NOT NeedPost Then                                                                // +1, alternative branch, nesting not taken into account
+        ElseIf NOT NeedPost Then                                                        // +1, alternative branch, nesting not taken into account
             DocumentObject.Write(DocumentWriteMode.Write);
-        Else                                                                                    // +1, default branch, nesting not taken into account
+        Else                                                                            // +1, default branch, nesting not taken into account
             Raise "Why?";
         EndIf;
-    Except                                                                                      // +1, except processing
+    Except                                                                              // +1, except processing
         RetryWrite = FALSE;
-        Try                                                                                     // +0, try, increases nesting level
-            If DocumentObject.Posted Then                                                       // +3, nested condition, nesting 2
+        Try                                                                             // +0, try, increases nesting level
+            If DocumentObject.Posted Then                                               // +3, nested condition, nesting 2
                 DocumentObject.Write(DocumentWriteMode.Write);
             EndIf;
-        Raise                                                                                   // +2, except processing, nesting 1
+        Raise                                                                           // +2, except processing, nesting 1
             RetryWrite = ИСТИНА;
         EndTry;
-        If NOT RetryWrite Then                                                                  // +2, nested condition, nesting 1
-            While TransactionIsActive() Do                                                      // +3, nested loop, nesting 2
+        If NOT RetryWrite Then                                                          // +2, nested condition, nesting 1
+            While TransactionIsActive() Do                                              // +3, nested loop, nesting 2
                 CancelTransaction();
             EndDo;
         EndIf;

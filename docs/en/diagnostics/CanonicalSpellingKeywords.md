@@ -15,7 +15,7 @@ A built-in language constructs, keywords must be written canonically.
 | Для                | For           |
 | Если               | If            |
 | Знач               | Val           |
-| И                  | AND, and      |
+| И                  | AND, And      |
 | Из                 | In            |
 | ИЛИ, Или           | OR, Or        |
 | Иначе              | Else          |
@@ -44,7 +44,7 @@ A built-in language constructs, keywords must be written canonically.
 | Функция            | Function      |
 | Экспорт            | Export        |
 
-### Preprocessor instrutions
+### Preprocessor instructions
 
 | RU                                 | EN                             |
 |------------------------------------|--------------------------------|

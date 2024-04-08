@@ -76,7 +76,7 @@ Query1.Text =
 
 ## Sources
 <!-- Необходимо указывать ссылки на все источники, из которых почерпнута информация для создания диагностики -->
-Source: [Making query text](https://its.1c.ru/db/v8std#content:437:hdoc)
+Source: [Making query text (RU)](https://its.1c.ru/db/v8std#content:437:hdoc)
 <!-- Примеры источников
 
 * Источник: [Стандарт: Тексты модулей](https://its.1c.ru/db/v8std#content:456:hdoc)
